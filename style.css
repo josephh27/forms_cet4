@@ -118,7 +118,7 @@ body {
 	bottom: 100%;
 	left: 0;
 	width: 100%;
-	height: 1.8em;
+	height: 1.9rem;
 	background: black;
 	-webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
 	transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
@@ -196,8 +196,9 @@ input[type='file']::-webkit-file-upload-button {
   input[type='file']:hover::before {
 	border-color: black;
   }
+
   input[type='file']:active::before {
-	background: -webkit-linear-gradient(top, #130e0e, #1b1818);
+	background: -webkit-linear-gradient(top, rgb(233, 228, 228), rgb(243, 237, 237));
   }
 
 .row8 {
@@ -207,7 +208,6 @@ input[type='file']::-webkit-file-upload-button {
 .row8 input{
 	width: 80px;
 	padding: 5px 10px;
-	margin-right: 20px;
 	font-weight: bold;
 	background-color: white;
 	background-image: -moz-linear-gradient(top, rgb(209, 198, 198) 10%, #fff 100%); 
@@ -219,11 +219,22 @@ input[type='file']::-webkit-file-upload-button {
 	transition: background 300ms ease-in-out;
 }
 
+.row8 input:first-child {
+	margin-right: 15px;
+}
+
 .row8 input:hover {
 	background-position: -200%;
 	transition: background 300ms ease-in-out;
 
 }
+
+@media only screen and (max-width: 500px) {
+	.main-form {
+		padding: 40px 20px;
+	}
+}
+
 
 @media only screen and (min-width: 500px) {
 	.row1 .input{
@@ -245,10 +256,16 @@ input[type='file']::-webkit-file-upload-button {
 		width: 200px;
 	}
 
-	.row7 .input:nth-child(4) {
-		width: 25%;
+	.input___field {
+		font-size: 0.8rem;
+	}
+	.input__label {
+		font-size: 0.9rem;
 	}
 
+	h1 {
+		font-size: 1.6rem;
+	}
 }
 
 @media only screen and (min-width: 900px) {
@@ -271,8 +288,15 @@ input[type='file']::-webkit-file-upload-button {
 		width: 25%;
 	}
 
-	.row7 .input:nth-child(4) {
-		width: 25%;
+	.input___field {
+		font-size: 1rem;
+	}
+	.input__label {
+		font-size: 1.1rem;
+	}
+
+	h1 {
+		font-size: 2rem;
 	}
 
 }
