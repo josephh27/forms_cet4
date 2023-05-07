@@ -6,7 +6,7 @@ let otherReligion = document.querySelector(".other-religion");
 let work = document.querySelector("select[name='work-type']");
 let otherWork = document.querySelector(".other-work");
 
-checkEmpty = (inputBox) => {
+const checkEmpty = (inputBox) => {
     let inputField = inputBox.querySelector(".input__field");
     if (inputField) {
         inputField.addEventListener('focusout', () => {
@@ -814,11 +814,13 @@ generateCountries = () => {
     })
 }
 
+//To retain the naming convention in value attribute
 nameConverter = (name) => {
     name = name.toLowerCase().replaceAll(' ', '-');
     return name;
 }
 
+//To revert naming convention to fit into the province keys
 nameReverter = (name) => {
     let words = name.split("-");
     words.forEach((word, index, array) => {
@@ -844,5 +846,84 @@ function removeOptions(selection) {
     }
  }
  
- // using the function:
+
+
+ //Input Validations
+ const firstName = document.querySelector("#first-name");
+ const middleName = document.querySelector("#middle-name");
+ const familyName = document.querySelector("#family-name");
+ const phoneNum = document.querySelector("#phone-num");
+ const email = document.querySelector("#email");
+ const birthday = document.querySelector("#birthday");
+ const inputBoxes = [firstName, middleName, familyName, phoneNum, email, birthday] ;
+ const nameBoxes = [firstName, middleName, familyName]; 
+
+const checkEmptyValid = (elem) => {
+	return elem.value.trim().length === 0;
+}
+
+const checkNameLength = (elem) => {
+	return elem.value.trim().length <= 50; 
+}
+
+const containsNaN = (elem) => {
+	return /^\d+$/.test(elem.value.trim());
+}
+
+const containsAt = (elem) => {
+	return elem.value.trim().includes('@');
+}
  
+const validateInputs = () => {
+	nameBoxes.forEach(elem => {
+		if (checkEmptyValid(elem)) {
+			setError(elem, 'Must not be empty')
+		} else if (!checkNameLength(elem)) {
+			setError(elem, 'Must be less than 51 characters')
+		} else {
+			setSuccess(elem, 'Valid Input')
+		}
+	})
+
+	if (checkEmptyValid(phoneNum)) {
+		setError(phoneNum, 'Must not be empty')
+	} else if (!containsNaN(phoneNum)) {
+		setError(phoneNum, 'Only numbers are allowed');
+	} else {
+		setSuccess(phoneNum, 'Valid Input')
+	}
+
+	if (checkEmptyValid(email)) {
+		setError(email, 'Must not be empty')
+	} else if (!containsAt(email)) {
+		setError(email, 'Must contain @ symbol');
+	} else {
+		setSuccess(email, 'Valid Input')
+	}
+}
+
+const setError = (element, message) => {
+	const inputContainer = element.parentElement;
+	const errorDisplay = inputContainer.querySelector('.error-con');
+
+	errorDisplay.textContent = message;
+	errorDisplay.classList.add('error');
+	errorDisplay.classList.remove('success');
+}
+
+const setSuccess = (element, message) => {
+	const inputContainer = element.parentElement;
+	const errorDisplay = inputContainer.querySelector('.error-con');
+
+	errorDisplay.textContent = message;
+	errorDisplay.classList.add('success');
+	errorDisplay.classList.remove('error');
+}
+
+
+
+inputBoxes.forEach((elem) => {
+	elem.addEventListener('focusout', () => {
+		validateInputs();
+	})
+})

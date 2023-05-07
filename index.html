@@ -13,38 +13,53 @@
     <div class="wrapper">
         <h1>Employee Registration Form</h1>
         <form class="main-form" action="index.html" method="get">
-            <h1>1.) Personal and Basic Information</h1>
+            <h1>1.) Personal Information</h1>
             <div class="row row1">
                 <span class="input input--minoru">
-                    <input class="input__field input__field--yoko" name="first-name" type="text" id="first-name" pattern="[A-Za-z]{1,40}">
+                    <input class="input__field input__field--yoko" name="first-name" type="text" id="first-name" required>
                     <label class="input__label input__label--yoko" for="first-name">First Name</label>
+                    <div class="error-con" id="first-name-error"></div>
                 </span>
                 <span class="input input--minoru">
-                    <input class="input__field input__field--yoko" name="last-name" type="text" id="last-name" maxlength="40">
-                    <label class="input__label input__label--yoko" for="last-name" >Middle Name</label>
+                    <input class="input__field input__field--yoko" name="middle-name" type="text" id="middle-name">
+                    <label class="input__label input__label--yoko" for="middle-name" >Middle Name</label>
+                    <div class="error-con" id="middle-name-error"></div>
                 </span>
                 <span class="input input--minoru">
-                    <input class="input__field input__field--yoko" name="family-name" type="text" id="family-name" maxlength="40">
+                    <input class="input__field input__field--yoko" name="family-name" type="text" id="family-name" required>
                     <label class="input__label input__label--yoko" for="family-name" >Family Name</label>
+                    <div class="error-con" id="family-name-error"></div>
                 </span>
                 <span class="input input--minoru">
                     <input class="input__field input__field--yoko" name="suffix" type="text" id="suffix">
                     <label class="input__label input__label--yoko" for="suffix" >Suffix</label>
+                    <div class="error-con" id="phone-num-error"></div>
                 </span>
             </div>
             <div class="row row2">
                 <span class="input input--minoru">
-                    <input class="input__field input__field--yoko" name="birthday" type="date" id="birthday">
-                    <label class="input__label input__label--yoko" for="birthday" >Date of Birth</label>
+                    <input class="input__field input__field--yoko" name="phone-num" type="text" id="phone-num" required>
+                    <label class="input__label input__label--yoko" for="phone-num" >Cellphone Number</label>
+                    <div class="error-con" id="phone-num-error"></div>
                 </span>
                 <span class="input input--minoru">
-                    <input class="input__field input__field--yoko" name="birthplace" type="text" id="birthplace">
+                    <input class="input__field input__field--yoko" name="email" type="email" id="email" required>
+                    <label class="input__label input__label--yoko" for="email" >Email</label>
+                    <div class="error-con" id="email-error"></div>
+                </span>
+                <span class="input input--minoru">
+                    <input class="input__field input__field--yoko" name="birthday" type="date" id="birthday" required>
+                    <label class="input__label input__label--yoko" for="birthday" >Date of Birth</label>
+                    <div class="error-con" id="birthday-error"></div>
+                </span>
+                <span class="input input--minoru">
+                    <input class="input__field input__field--yoko" name="birthplace" type="text" id="birthplace" required>
                     <label class="input__label input__label--yoko" for="birthplace" >Place of Birth</label>
                 </span>
             </div>
             <div class="row row3">
                 <span class="input input--minoru">
-                    <select class="input__label input__label--yoko" name="gender">
+                    <select class="input__label input__label--yoko" name="gender" required>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="others">Others</option>
@@ -56,13 +71,13 @@
                     <label class="input__label input__label--yoko" for="other-gender" >Other (Please Specify)</label>
                 </span>
                 <span class="input input--minoru">
-                    <select class="input__label input__label--yoko" name="civil-status">
+                    <select class="input__label input__label--yoko" name="civil-status" required>
                         <option value="male">Single</option>
                         <option value="female">Married</option>
                         <option value="others">Separated</option>
                         <option value="others">Widowed</option>
                     </select>
-                    <label class="input__label input__label--yoko" for="civil-status" >Civil Status</label>
+                    <label class="input__label input__label--yoko" for="civil-status" required>Civil Status</label>
                 </span>
             </div>
             <div class="row row4">
@@ -81,7 +96,7 @@
                     <label class="input__label input__label--yoko" for="religion-others">Others (Please specify)</label>
                 </span>
                 <span class="input input--minoru">
-                    <select class="input__label input__label--yoko" name="citizenship" value="philippines">
+                    <select class="input__label input__label--yoko" name="citizenship" value="philippines" required>
                         <option value="afghan">Afghan</option>
                         <option value="albanian">Albanian</option>
                         <option value="algerian">Algerian</option>
@@ -294,13 +309,13 @@
                     <label class="input__label input__label--yoko" for="present-lot/block">Lot/Block</label>
                 </span>
                 <span class="input input--minoru">
-                    <select name="province" class="input__label input__label--yoko" name="present-province" id="present-province">
+                    <select name="province" class="input__label input__label--yoko" name="present-province" id="present-province" required>
                     
                     </select>
                     <label class="input__label input__label--yoko" for="present-province">Province</label>
                 </span>
                 <span class="input input--minoru">
-                    <select name="present-city" class="input__label input__label--yoko" id="present-city">
+                    <select name="present-city" class="input__label input__label--yoko" id="present-city" required>
 
                     </select>
                     <label class="input__label input__label--yoko" for="present-city">City</label>
@@ -310,14 +325,14 @@
                     <label class="input__label input__label--yoko" for="present-barangay">Barangay</label>
                 </span>
                 <span class="input input--minoru">
-                    <input class="input__field input__field--yoko" name="present-zip/postal-code" type="text" id="present-zip/postal-code">
+                    <input class="input__field input__field--yoko" name="present-zip/postal-code" type="text" id="present-zip/postal-code" required>
                     <label class="input__label input__label--yoko" for="present-zip/postal-code">Postal Code</label>
                 </span>
                 <span class="input input--minoru">
                     <select name="present-country" class="input__label input__label--yoko" id="present-country">
 
                     </select>
-                    <label class="input__label input__label--yoko" for="present-country">Country</label>
+                    <label class="input__label input__label--yoko" for="present-country" required>Country</label>
                 </span>
             </div>
             <h1>3.) Permanent Address</h1>
@@ -335,13 +350,13 @@
                     <label class="input__label input__label--yoko" for="permanent-lot/block">Lot/Block</label>
                 </span>
                 <span class="input input--minoru">
-                    <select name="permanent-province" class="input__label input__label--yoko" id="permanent-province">
+                    <select name="permanent-province" class="input__label input__label--yoko" id="permanent-province" required>
                     
                     </select>
                     <label class="input__label input__label--yoko" for="permanent-province">Province</label>
                 </span>
                 <span class="input input--minoru">
-                    <select name="permanent-city" class="input__label input__label--yoko" id="permanent-city">
+                    <select name="permanent-city" class="input__label input__label--yoko" id="permanent-city" required>
 
                     </select>
                     <label class="input__label input__label--yoko" for="permanent-city">City</label>
@@ -351,7 +366,7 @@
                     <label class="input__label input__label--yoko" for="permanent-barangay">Barangay</label>
                 </span>
                 <span class="input input--minoru">
-                    <input class="input__field input__field--yoko" name="permanent-zip/postal-code" type="text" id="permanent-zip/postal-code">
+                    <input class="input__field input__field--yoko" name="permanent-zip/postal-code" type="text" id="permanent-zip/postal-code" required>
                     <label class="input__label input__label--yoko" for="permanent-zip/postal-code">Postal Code</label>
                 </span>
                 <span class="input input--minoru">
@@ -364,7 +379,7 @@
             <h1>4. Work Details</h1>
             <div class="row row7">
                 <span class="input input--minoru">
-                    <select name="applying-position" class="input__label input__label--yoko" id="applying-position">
+                    <select name="applying-position" class="input__label input__label--yoko" id="applying-position" required>
                         <option value="permanent">Junior Frontend Developer</option>
                         <option value="permanent">Junior Backend Developer</option>
                         <option value="permanent">Salesforce Developer</option>
@@ -373,7 +388,7 @@
                     <label class="input__label input__label--yoko" for="applying-position">Applying Position</label>
                 </span>
                 <span class="input input--minoru">
-                    <select name="work-type" class="input__label input__label--yoko" id="work-type">
+                    <select name="work-type" class="input__label input__label--yoko" id="work-type" required>
                         <option value="permanent">Permanent</option>
                         <option value="temporary">Temporary</option>
                         <option value="both">Both</option>
@@ -386,7 +401,7 @@
                     <label class="input__label input__label--yoko" for="other-work">Other (Please Specify)</label>
                 </span>
                 <span class="input input--minoru">
-                    <input type="file" id="resume">
+                    <input type="file" id="resume" required>
                     <label class="input__label input__label--yoko" for="resume" >Please Upload Resume</label>
                 </span>
             </div>

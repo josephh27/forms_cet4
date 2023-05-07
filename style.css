@@ -38,8 +38,7 @@ body {
     display: inline-block;
 	max-width: 100%;
 	padding: 0px 10px;
-	margin-bottom: 20px;
-	
+	margin-bottom: 30px;
 }
 
 .other-gender, .other-religion, .other-work {
@@ -54,7 +53,7 @@ body {
 	position: relative;
 	display: block;
 	float: right;
-	padding: 0.4em;
+	padding: 0.25rem;
 	max-width: 100%;
 	border: none;
 	border-radius: 0;
@@ -128,7 +127,8 @@ body {
 	transition: transform 0.3s;
 }
 
-input[type='text'] + .input__label--yoko::after, input[type='date'] + .input__label--yoko::after  {
+input[type='text'] + .input__label--yoko::after, input[type='date'] + .input__label--yoko::after,
+input[type='email'] + .input__label--yoko::after  {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -229,15 +229,30 @@ input[type='file']::-webkit-file-upload-button {
 
 }
 
+.error-con {
+	position: absolute;
+	top: 55px;
+}
+
+.error {
+	color: red;
+	font-size: 0.8rem;
+}
+
+.success {
+	color: green;
+	font-size: 0.8rem;
+}
+
 @media only screen and (max-width: 500px) {
-	.main-form {
-		padding: 40px 20px;
+	.wrapper {
+		padding: 0px 20px;
 	}
 }
 
 
-@media only screen and (min-width: 500px) {
-	.row1 .input{
+@media only screen and (max-width:899px){
+	.row1 .input, .row2 .input:nth-child(n+1):nth-child(-n+2){
 		float: left;
 		width: 300px;
 	}
@@ -246,7 +261,7 @@ input[type='file']::-webkit-file-upload-button {
 		width: 100px;
 	}
 
-	.row2 .input:first-child {
+	.row2 .input:first-child, .row2 .input:nth-child(3) {
 		width: 200px;
 	}
 
@@ -269,8 +284,11 @@ input[type='file']::-webkit-file-upload-button {
 }
 
 @media only screen and (min-width: 900px) {
+	/* .row .input {
+		
+	} */
+
 	.row1 .input{
-		float: left;
 		width: 25%;
 	}
 
@@ -278,13 +296,14 @@ input[type='file']::-webkit-file-upload-button {
 		width: 15%;
 	}
 
-	.row2 .input:first-child {
+	.row2 .input:nth-child(3) {
 		width: 20%;
 	}
 
 	.row5 .input:nth-child(-n+3), .row6 .input:nth-child(-n+3), 
 	.row5 .input:nth-child(n+6):nth-child(-n+7),
-	.row6 .input:nth-child(n+6):nth-child(-n+7){
+	.row6 .input:nth-child(n+6):nth-child(-n+7),
+	.row2 .input:nth-child(n+1):nth-child(-n+2){
 		width: 25%;
 	}
 
@@ -299,5 +318,8 @@ input[type='file']::-webkit-file-upload-button {
 		font-size: 2rem;
 	}
 
+	.input__field[type='date'] {
+		max-height: 27px;
+	}
 }
 
