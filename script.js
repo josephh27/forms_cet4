@@ -849,6 +849,7 @@ function removeOptions(selection) {
 
 
  //Input Validations
+ const form = document.querySelector(".main-form");
  const firstName = document.querySelector("#first-name");
  const middleName = document.querySelector("#middle-name");
  const familyName = document.querySelector("#family-name");
@@ -857,6 +858,8 @@ function removeOptions(selection) {
  const birthday = document.querySelector("#birthday");
  const inputBoxes = [firstName, middleName, familyName, phoneNum, email, birthday] ;
  const nameBoxes = [firstName, middleName, familyName]; 
+
+
 
 const checkEmptyValid = (elem) => {
 	return elem.value.trim().length === 0;
@@ -872,6 +875,18 @@ const containsNaN = (elem) => {
 
 const containsAt = (elem) => {
 	return elem.value.trim().includes('@');
+}
+
+const getAge = (elem) => {
+	let today = new Date();
+	let birthDate = new Date(elem.value);
+	console.log(today.getDate());
+	let age = today.getFullYear() - birthDate.getFullYear();
+	let m = today.getMonth() - birthDate.getMonth();
+	if ((m < 0) || (m === 0 && today.getDate() < birthDate.getDate())) {
+		age--
+	}
+	return age
 }
  
 const validateInputs = () => {
@@ -900,6 +915,13 @@ const validateInputs = () => {
 	} else {
 		setSuccess(email, 'Valid Input')
 	}
+	if  (checkEmptyValid(birthday)) {
+		setError(birthday, 'Must not be empty')
+	} else if (getAge(birthday) < 18) {
+		setError(birthday, 'Must be aged 18 or older')
+	} else {
+		setSuccess(birthday, 'Valid input');
+	}
 }
 
 const setError = (element, message) => {
@@ -920,10 +942,19 @@ const setSuccess = (element, message) => {
 	errorDisplay.classList.remove('error');
 }
 
-
-
 inputBoxes.forEach((elem) => {
 	elem.addEventListener('focusout', () => {
 		validateInputs();
 	})
 })
+
+form.addEventListener('submit', e => {
+	const errorBoxes = document.querySelectorAll('.error');
+	validateInputs();
+	if (errorBoxes.length > 0) {
+		e.preventDefault();
+	}
+})
+
+var phil = require('phil-reg-prov-mun-brgy');
+console.log(phil.regions);

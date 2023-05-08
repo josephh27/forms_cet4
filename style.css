@@ -171,14 +171,17 @@ input[type='email'] + .input__label--yoko::after  {
 }
 
 input[type='file'] {
-	max-width: 100%;
+	color: black;
+	display: block;
+	width: 200px; 
 }
 
 input[type='file']::-webkit-file-upload-button {
-	visibility: hidden;
+	display: none;
   }
   input[type='file']::before {
-	content: 'Select some files';
+	content: 'Select a file';
+	margin-right: 10px;
 	max-width: 100%;
 	color: black;
 	display: inline-block;
@@ -200,6 +203,17 @@ input[type='file']::-webkit-file-upload-button {
   input[type='file']:active::before {
 	background: -webkit-linear-gradient(top, rgb(233, 228, 228), rgb(243, 237, 237));
   }
+
+
+/* #upload-resume {
+	float: left;
+} */
+
+label[for='resume'] {
+	float: left;
+	text-align: left;
+	width: fit-content;
+}
 
 .row8 {
 	padding: 0px 10px;
