@@ -101,7 +101,7 @@ const generatePermMunicipalities = (province) => {
 
 
 async function findBarangay(municipalityCode) {
-	const response = await fetch(`https://psgc.gitlab.io/api/municipalities/${municipalityCode}/barangays/`);
+	const response = await fetch(`https://psgc.gitlab.io/api/cities-municipalities/${municipalityCode}/barangays.json`);
 	const barangays = await response.json();
 	removeOptions(barangaySelection);
 	for (let i = 0; i < barangays.length; i++) {
@@ -113,9 +113,9 @@ async function findBarangay(municipalityCode) {
 }
 
 async function permFindBarangay(municipalityCode) {
-	const response = await fetch(`https://psgc.gitlab.io/api/municipalities/${municipalityCode}/barangays/`);
+	const response = await fetch(`https://psgc.gitlab.io/api/cities-municipalities/${municipalityCode}/barangays.json`);
 	const barangays = await response.json();
-	removeOptions(barangaySelection);
+	removeOptions(permBarangaySelection);
 	for (let i = 0; i < barangays.length; i++) {
 		let newOpt = document.createElement('option');
 		newOpt.textContent = barangays[i]['name'];
@@ -125,7 +125,7 @@ async function permFindBarangay(municipalityCode) {
 }
 
 async function findMunicipality(provinceCode) {
-	const response = await fetch(`https://psgc.gitlab.io/api/provinces/${provinceCode}/municipalities/`);
+	const response = await fetch(`https://psgc.gitlab.io/api/provinces/${provinceCode}/municipalities.json`);
 	const municipalities = await response.json();
 	for (let i = 0; i < municipalities.length; i++) {
 		if (municipalities[i]['name'] === nameReverter(municipalitySelection.value)) {
@@ -136,10 +136,10 @@ async function findMunicipality(provinceCode) {
 }
 
 async function permFindMunicipality(provinceCode) {
-	const response = await fetch(`https://psgc.gitlab.io/api/provinces/${provinceCode}/municipalities/`);
+	const response = await fetch(`https://psgc.gitlab.io/api/provinces/${provinceCode}/municipalities.json`);
 	const municipalities = await response.json();
 	for (let i = 0; i < municipalities.length; i++) {
-		if (municipalities[i]['name'] === nameReverter(municipalitySelection.value)) {
+		if (municipalities[i]['name'] === nameReverter(permMunicipalitySelection.value)) {
 			permFindBarangay(municipalities[i]['code'])
 			break
 		}
@@ -147,7 +147,7 @@ async function permFindMunicipality(provinceCode) {
 }
 
 async function findProvince() {
-	const response = await fetch(`https://psgc.gitlab.io/api/provinces/`);
+	const response = await fetch(`https://psgc.gitlab.io/api/provinces.json`);
 	const provinces = await response.json();
 
 	for (let i = 0; i < provinces.length; i++) {
@@ -159,11 +159,11 @@ async function findProvince() {
 }
 
 async function findPermProvince() {
-	const response = await fetch(`https://psgc.gitlab.io/api/provinces/`);
+	const response = await fetch(`https://psgc.gitlab.io/api/provinces.json`);
 	const provinces = await response.json();
 
 	for (let i = 0; i < provinces.length; i++) {
-		if (provinces[i]['name'] === nameReverter(provinceSelection.value)) {
+		if (provinces[i]['name'] === nameReverter(permProvinceSelection.value)) {
 			permFindMunicipality(provinces[i]['code'])
 			break
 		}
