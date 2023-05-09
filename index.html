@@ -12,7 +12,7 @@
 <body>
     <div class="wrapper">
         <h1>Employee Registration Form</h1>
-        <form class="main-form" action="index.html" method="get">
+        <form class="main-form" action="result.php" method="post" name="form">
             <h1>1.) Personal Information</h1>
             <div class="row row1">
                 <span class="input input--minoru">
@@ -60,22 +60,22 @@
             <div class="row row3">
                 <span class="input input--minoru">
                     <select class="input__label input__label--yoko" name="gender" required>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                         <option value="others">Others</option>
                     </select>
                     <label class="input__label input__label--yoko" for="gender" >Gender</label>
                 </span>
                 <span class="input input--minoru other-gender">
-                    <input class="input__field input__field--yoko" type="text" id="other-gender" name="gender">
+                    <input class="input__field input__field--yoko" type="text" id="other-gender" name="other-gender">
                     <label class="input__label input__label--yoko" for="other-gender" >Other (Please Specify)</label>
                 </span>
                 <span class="input input--minoru">
                     <select class="input__label input__label--yoko" name="civil-status" required>
-                        <option value="male">Single</option>
-                        <option value="female">Married</option>
-                        <option value="others">Separated</option>
-                        <option value="others">Widowed</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Separated">Separated</option>
+                        <option value="Widowed">Widowed</option>
                     </select>
                     <label class="input__label input__label--yoko" for="civil-status" required>Civil Status</label>
                 </span>
@@ -92,7 +92,7 @@
                     <label class="input__label input__label--yoko" for="religion">Religion</label>
                 </span>
                 <span class="input input--minoru other-religion">
-                    <input class="input__field input__field--yoko" name="religion" type="text" id="religion-others">
+                    <input class="input__field input__field--yoko" name="other-religion" type="text" id="religion-others">
                     <label class="input__label input__label--yoko" for="religion-others">Others (Please specify)</label>
                 </span>
                 <span class="input input--minoru">
@@ -294,6 +294,7 @@
                 </span>
                 
             </div>
+            s
             <h1>2.) Present Address</h1>
             <div class="row row5">
                 <span class="input input--minoru">
@@ -309,7 +310,7 @@
                     <label class="input__label input__label--yoko" for="present-lot/block">Lot/Block</label>
                 </span>
                 <span class="input input--minoru">
-                    <select name="province" class="input__label input__label--yoko" name="present-province" id="present-province" required>
+                    <select class="input__label input__label--yoko" name="present-province" id="present-province" required>
                     
                     </select>
                     <label class="input__label input__label--yoko" for="present-province">Province</label>
@@ -384,24 +385,24 @@
             <div class="row row7">
                 <span class="input input--minoru">
                     <select name="applying-position" class="input__label input__label--yoko" id="applying-position" required>
-                        <option value="permanent">Junior Frontend Developer</option>
-                        <option value="permanent">Junior Backend Developer</option>
-                        <option value="permanent">Salesforce Developer</option>
-                        <option value="permanent">Senior Backend Developer</option>
+                        <option value="Junior Frontend Developer">Junior Frontend Developer</option>
+                        <option value="Junior Backend Developer">Junior Backend Developer</option>
+                        <option value="Salesforce Developer">Salesforce Developer</option>
+                        <option value="Senior Backend Developer">Senior Backend Developer</option>
                     </select>
                     <label class="input__label input__label--yoko" for="applying-position">Applying Position</label>
                 </span>
                 <span class="input input--minoru">
                     <select name="work-type" class="input__label input__label--yoko" id="work-type" required>
-                        <option value="permanent">Permanent</option>
-                        <option value="temporary">Temporary</option>
-                        <option value="both">Both</option>
+                        <option value="Permanent">Permanent</option>
+                        <option value="Temporary">Temporary</option>
+                        <option value="Both">Both</option>
                         <option value="others">Others</option>
                     </select>
                     <label class="input__label input__label--yoko" for="work-type">Type of Work</label>
                 </span>
                 <span class="input input--minoru other-work">
-                    <input class="input__field input__field--yoko" type="text" id="other-work" name="work-type">
+                    <input class="input__field input__field--yoko" type="text" id="other-work" name="other-work-type">
                     <label class="input__label input__label--yoko" for="other-work">Other (Please Specify)</label>
                 </span>
                 <span class="input input--minoru" id="upload-resume">
@@ -410,7 +411,7 @@
                 </span>
             </div>
             <div class="row row8">
-                <input type="submit" value="Submit">
+                <input type="submit" value="submit" name="submit">
                 <input type="reset" value="Reset">
             </div>
         </form>

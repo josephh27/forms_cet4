@@ -1,0 +1,38 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background: #202124;
+	color: white;
+}
+
+.wrapper {
+	max-width: 1000px;
+	margin: 100px auto;
+	padding: 0px 30px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	min-width: 100%;
+	padding: 40px 30px;
+	margin-top: 50px;
+	background: #fcfafa;
+    color: black;
+	border-radius: 3px;
+	box-shadow: 0px 5px 20px 0px rgba(255,255,255,0.5)
+
+}
+
+.category {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.result {
+    font-size: 1.4rem;
+}

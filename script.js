@@ -42,9 +42,6 @@ otherDisplay(work, otherWork);
 
 /* For the dropdown options in the addresses */
 
-
-
-
 let countrySelection = document.querySelector("#present-country");
 let provinceSelection = document.querySelector("#present-province");
 let municipalitySelection = document.querySelector("#present-municipality");
@@ -54,13 +51,21 @@ let permProvinceSelection = document.querySelector("#permanent-province");
 let permMunicipalitySelection = document.querySelector("#permanent-municipality");
 let permBarangaySelection = document.querySelector("#permanent-barangay");
 
+const nameReverter = (name) => {
+    let words = name.split("-");
+    words.forEach((word, index, array) => {
+         array[index] = word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    return words.join(" ");
+}
+
 
 const generateProvinces = () => {
     for (let prop in provinces) {
         if (Object.prototype.hasOwnProperty.call(provinces, prop)){
             let newOpt = document.createElement('option');
             newOpt.textContent = prop;
-            newOpt.value = nameConverter(prop);
+            newOpt.value = prop;
             const clone = newOpt.cloneNode(true);
             provinceSelection.appendChild(newOpt);
             permProvinceSelection.appendChild(clone);
@@ -70,13 +75,14 @@ const generateProvinces = () => {
 
 const generateMunicipalities = (province) => {
     removeOptions(municipalitySelection);
-    let value = nameReverter(province.value);
+    let value = province.value;
     if (value in provinces) {
         provinces[value].forEach((municipality) => {
             let newOpt = document.createElement('option');
             newOpt.textContent = municipality;
-            newOpt.value = nameConverter(municipality);
-            municipalitySelection.appendChild(newOpt);
+            newOpt.value = municipality;
+			const clone = newOpt.cloneNode(true);
+            municipalitySelection.appendChild(clone);
             }
         )
     }
@@ -85,20 +91,18 @@ const generateMunicipalities = (province) => {
 
 const generatePermMunicipalities = (province) => {
     removeOptions(permMunicipalitySelection);
-    let value = nameReverter(province.value);
+    let value = province.value;
     if (value in provinces) {
         provinces[value].forEach((municipality) => {
             let newOpt = document.createElement('option');
             newOpt.textContent = municipality;
-            newOpt.value = nameConverter(municipality);
-            permMunicipalitySelection.appendChild(newOpt);
+            const clone = newOpt.cloneNode(true);
+            permMunicipalitySelection.appendChild(clone);
             }
         )
     }
 	findPermProvince();
 }
-
-
 
 async function findBarangay(municipalityCode) {
 	const response = await fetch(`https://psgc.gitlab.io/api/cities-municipalities/${municipalityCode}/barangays.json`);
@@ -107,7 +111,7 @@ async function findBarangay(municipalityCode) {
 	for (let i = 0; i < barangays.length; i++) {
 		let newOpt = document.createElement('option');
 		newOpt.textContent = barangays[i]['name'];
-		newOpt.value = nameConverter(barangays[i]['name']);
+		newOpt.value = barangays[i]['name'];
 		barangaySelection.appendChild(newOpt);
 	}
 }
@@ -119,7 +123,7 @@ async function permFindBarangay(municipalityCode) {
 	for (let i = 0; i < barangays.length; i++) {
 		let newOpt = document.createElement('option');
 		newOpt.textContent = barangays[i]['name'];
-		newOpt.value = nameConverter(barangays[i]['name']);
+		newOpt.value = barangays[i]['name'];
 		permBarangaySelection.appendChild(newOpt);
 	}
 }
@@ -128,7 +132,7 @@ async function findMunicipality(provinceCode) {
 	const response = await fetch(`https://psgc.gitlab.io/api/provinces/${provinceCode}/municipalities.json`);
 	const municipalities = await response.json();
 	for (let i = 0; i < municipalities.length; i++) {
-		if (municipalities[i]['name'] === nameReverter(municipalitySelection.value)) {
+		if (municipalities[i]['name'] === municipalitySelection.value) {
 			findBarangay(municipalities[i]['code'])
 			break
 		}
@@ -139,7 +143,7 @@ async function permFindMunicipality(provinceCode) {
 	const response = await fetch(`https://psgc.gitlab.io/api/provinces/${provinceCode}/municipalities.json`);
 	const municipalities = await response.json();
 	for (let i = 0; i < municipalities.length; i++) {
-		if (municipalities[i]['name'] === nameReverter(permMunicipalitySelection.value)) {
+		if (municipalities[i]['name'] === permMunicipalitySelection.value) {
 			permFindBarangay(municipalities[i]['code'])
 			break
 		}
@@ -151,7 +155,7 @@ async function findProvince() {
 	const provinces = await response.json();
 
 	for (let i = 0; i < provinces.length; i++) {
-		if (provinces[i]['name'] === nameReverter(provinceSelection.value)) {
+		if (provinces[i]['name'] === provinceSelection.value) {
 			findMunicipality(provinces[i]['code'])
 			break
 		}
@@ -163,7 +167,7 @@ async function findPermProvince() {
 	const provinces = await response.json();
 
 	for (let i = 0; i < provinces.length; i++) {
-		if (provinces[i]['name'] === nameReverter(permProvinceSelection.value)) {
+		if (provinces[i]['name'] === permProvinceSelection.value) {
 			permFindMunicipality(provinces[i]['code'])
 			break
 		}
@@ -179,22 +183,6 @@ const generateCountries = () => {
         countrySelection.appendChild(newOpt);
         permCountrySelection.appendChild(clone);
     })
-}
-
-//To retain the naming convention in value attribute
-const nameConverter = (name) => {
-    name = name.toLowerCase().replaceAll(' ', '-');
-    return name;
-}
-
-
-//To revert naming convention to fit into the province keys
-const nameReverter = (name) => {
-    let words = name.split("-");
-    words.forEach((word, index, array) => {
-         array[index] = word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    return words.join(" ");
 }
 
 generateCountries();
@@ -229,7 +217,6 @@ function removeOptions(selection) {
  const birthday = document.querySelector("#birthday");
  const inputBoxes = [firstName, middleName, familyName, phoneNum, email, birthday] ;
  const nameBoxes = [firstName, middleName, familyName]; 
-
 
 
 const checkEmptyValid = (elem) => {
@@ -287,7 +274,7 @@ const validateInputs = () => {
 	}
 	if  (checkEmptyValid(birthday)) {
 		setError(birthday, 'Must not be empty')
-	} else if (getAge(birthday) < 18) {
+	} else if (getAge(birthday) < 0) {
 		setError(birthday, 'Must be aged 18 or older')
 	} else {
 		setSuccess(birthday, 'Valid input');
