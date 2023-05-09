@@ -243,6 +243,9 @@ label[for='resume'] {
 
 }
 
+#other-work {
+	float: left;
+}
 .error-con {
 	position: absolute;
 	top: 55px;

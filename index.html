@@ -310,6 +310,12 @@
                     <label class="input__label input__label--yoko" for="present-lot/block">Lot/Block</label>
                 </span>
                 <span class="input input--minoru">
+                    <select class="input__label input__label--yoko" name="present-region" id="present-region" required>
+                    
+                    </select>
+                    <label class="input__label input__label--yoko" for="present-province">Region</label>
+                </span>
+                <span class="input input--minoru">
                     <select class="input__label input__label--yoko" name="present-province" id="present-province" required>
                     
                     </select>
@@ -348,9 +354,16 @@
                     <input class="input__field input__field--yoko" name="permanent-street" type="text" id="permanent-street">
                     <label class="input__label input__label--yoko" for="permanent-street">Street Name</label>
                 </span>
+                
                 <span class="input input--minoru">
                     <input class="input__field input__field--yoko" name="permanent-lot/block" type="text" id="permanent-lot/block">
                     <label class="input__label input__label--yoko" for="permanent-lot/block">Lot/Block</label>
+                </span>
+                <span class="input input--minoru">
+                    <select class="input__label input__label--yoko" name="permanent-region" id="permanent-region" required>
+                    
+                    </select>
+                    <label class="input__label input__label--yoko" for="present-province">Region</label>
                 </span>
                 <span class="input input--minoru">
                     <select name="permanent-province" class="input__label input__label--yoko" id="permanent-province" required>
@@ -401,7 +414,7 @@
                     </select>
                     <label class="input__label input__label--yoko" for="work-type">Type of Work</label>
                 </span>
-                <span class="input input--minoru other-work">
+                <span class="input input--minoru other-work" id="other-work">
                     <input class="input__field input__field--yoko" type="text" id="other-work" name="other-work-type">
                     <label class="input__label input__label--yoko" for="other-work">Other (Please Specify)</label>
                 </span>
@@ -411,7 +424,7 @@
                 </span>
             </div>
             <div class="row row8">
-                <input type="submit" value="submit" name="submit">
+                <input type="submit" value="Submit" name="submit">
                 <input type="reset" value="Reset">
             </div>
         </form>

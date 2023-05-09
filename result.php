@@ -25,6 +25,7 @@
             $presentHouse = $_POST['present-house-number'];
             $presentStreet = $_POST['present-street'];
             $presentLot = $_POST['present-lot/block'];
+            $presentRegion = $_POST['present-region'];
             $presentProvince = $_POST['present-province'];
             $presentMunicipality = $_POST['present-municipality'];
             $presentBarangay = $_POST['present-barangay'];
@@ -33,13 +34,14 @@
             $permanentHouse = $_POST['permanent-house-number'];
             $permanentStreet = $_POST['permanent-street'];
             $permanentLot = $_POST['permanent-lot/block'];
+            $permanentRegion = $_POST['permanent-region'];
             $permanentProvince = $_POST['permanent-province'];
             $permanentMunicipality = $_POST['permanent-municipality'];
             $permanentBarangay = $_POST['permanent-barangay'];
             $permanentZip = $_POST['permanent-zip/postal-code'];
             $permanentCountry = $_POST['permanent-country'];
             $applyingPosition = $_POST['applying-position'];
-            $workType= empty($_POST['other-work-type']) ? $_POST['work-type']: $_POST['other-work-type'];
+            $workType = empty($_POST['other-work-type']) ? $_POST['work-type']: $_POST['other-work-type'];
         }
     ?>
     <h1></h1>
@@ -63,6 +65,7 @@
             <div class='category-container'><span class='category'>House Number:  </span><span class="result"><?= $presentHouse?></span></div>
             <div class='category-container'><span class='category'>Street:  </span><span class="result"><?=  $presentStreet?></span></div>
             <div class='category-container'><span class='category'>Lot/Block:  </span><span class="result"><?=  $presentLot?></span></div>
+            <div class='category-container'><span class='category'>Region:  </span><span class="result"><?= $presentRegion?></span></div>
             <div class='category-container'><span class='category'>Province:  </span><span class="result"><?= $presentProvince?></span></div>
             <div class='category-container'><span class='category'>Municipality:  </span><span class="result"><?= $presentMunicipality?></span></div>
             <div class='category-container'><span class='category'>Barangay:  </span><span class="result"><?= $presentBarangay?></span></div>
@@ -72,6 +75,7 @@
             <div class='category-container'><span class='category'>House Number:  </span><span class="result"><?= $permanentHouse?></span></div>
             <div class='category-container'><span class='category'>Street:  </span><span class="result"><?=  $permanentStreet?></span></div>
             <div class='category-container'><span class='category'>Lot/Block:  </span><span class="result"><?=  $permanentLot?></span></div>
+            <div class='category-container'><span class='category'>Region:  </span><span class="result"><?= $permanentRegion?></span></div>
             <div class='category-container'><span class='category'>Province:  </span><span class="result"><?= $permanentProvince?></span></div>
             <div class='category-container'><span class='category'>Municipality:  </span><span class="result"><?= $permanentMunicipality?></span></div>
             <div class='category-container'><span class='category'>Barangay:  </span><span class="result"><?= $permanentBarangay?></span></div>
